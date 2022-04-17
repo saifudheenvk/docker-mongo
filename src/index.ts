@@ -1,9 +1,9 @@
 import express, {Request,Response,Application} from 'express';
 
-const { connect } = require("./db/database");
-const locationRouter = require("./routers/location")
-const cors = require('cors')
-const morgan = require("morgan");
+import { connect } from "./db/database";
+import locationRouter from "./routers/location";
+import cors from 'cors';
+import morgan from "morgan";
 
 const app:Application = express();
 

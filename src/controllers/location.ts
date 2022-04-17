@@ -4,7 +4,7 @@ import { ILocation } from "../db/location/types"
 import getLocations from "../services/locationService"
 
 
-module.exports = {
+export default {
     getLocation: async (req:Request, res:Response) => {
         try {
             const locations = await Location.getFilteredLocations(req.query)

@@ -1,12 +1,12 @@
 import { ILocation } from "../db/location/types";
-var fs = require('fs');
+import fs from 'fs';
 
 const getLocations = async (): Promise<Array<ILocation>> => {
     const rows: Array<string> = fs.readFileSync('resources/cities_canada-usa.csv',
         { encoding: 'utf8', flag: 'r' }).split("\n");
-    var csvData: Array<ILocation> = rows.slice(1).map((row: string, index: number) => {
-        let valuesRegExp = /,(?=(?:[^"]*"[^"]*")*[^"]*$)/g;
-        var values = row.split(valuesRegExp);
+    const csvData: Array<ILocation> = rows.slice(1).map((row: string, index: number) => {
+        const valuesRegExp = /,(?=(?:[^"]*"[^"]*")*[^"]*$)/g;
+        let values = row.split(valuesRegExp);
         if (!values[1]) {
             values = row.split("\t");
         }

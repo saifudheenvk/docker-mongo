@@ -1,6 +1,6 @@
 import express from "express"
 
-const locationController = require("../controllers/location")
+import locationController from "../controllers/location";
 
 
 const router = express.Router();
@@ -9,4 +9,4 @@ router.get("/",locationController.getLocation)
 // router.get("/add",locationController.addLocations)
 
 
-module.exports=router
+export default router
