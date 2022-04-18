@@ -21,6 +21,7 @@ app.get("/", (req:Request, res:Response):void => {
   //connect with mong
 connect();
 
-app.listen(process.env.PORT, ():void => {
+const server = app.listen(process.env.PORT, ():void => {
     console.log('server is on port ' + process.env.PORT)
 })
+export default server

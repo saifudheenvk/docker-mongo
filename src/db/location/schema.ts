@@ -11,17 +11,18 @@ const LocationSchema = new Mongoose.Schema<ILocationDocument, ILocationModel>({
 })
 
 LocationSchema.statics.getFilteredLocations = async function (this: ILocationModel, params: { q: string, radius: number, longitude: number, latitude: number, sort: string }) {
-    console.log(params)
     const query = this.aggregate().match({ name: { $regex: params.q || "" } })
     if (params.latitude && params.longitude) {
         query.addFields({
             tlon: Number(params.longitude),
             tlat: Number(params.latitude),
             trad: Number(params.radius),
+        })
+        query.addFields({
             distance: {
                 $function: {
                     body: function (latitude: number, tlat: number, longitude: number, tlon: number) {
-                        return Math.sqrt(Math.pow(latitude + tlat, 2) + Math.pow(longitude - tlon, 2))
+                        return Math.sqrt(Math.pow(latitude - tlat, 2) + Math.pow(longitude - tlon, 2))
                     },
                     args: ["$latitude", "$tlat", "$longitude", "$tlon"],
                     lang: "js"
