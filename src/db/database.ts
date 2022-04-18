@@ -5,7 +5,7 @@ export const connect = () => {
     if (database) {
       return;
     }
-    mongoose.connect(`mongodb://localhost:27017/${process.env.DATABASE}`);
+    mongoose.connect(`mongodb://${process.env.DB_HOST}:27017/${process.env.DATABASE}`);
     database = mongoose.connection;
     database.once("open", async () => {
       console.log("Connected to database");

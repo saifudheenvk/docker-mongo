@@ -7,7 +7,8 @@
     "test": "env-cmd -f ./config/dev.env jest --coverage",
     "test:watch": "jest --watch",
     "lint": "eslint",
-    "dev": "env-cmd -f ./config/dev.env ts-node-dev --respawn src/index.ts"
+    "dev": "env-cmd -f ./config/dev.env ts-node-dev --respawn src/index.ts",
+    "prod": "env-cmd -f ./config/prod.env ts-node-dev --respawn src/index.ts"
   },
   "author": "",
   "license": "ISC",
