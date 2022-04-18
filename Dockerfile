@@ -8,4 +8,8 @@ COPY package-lock.json ./
 
 RUN npm install --frozen-lockfile
 
+EXPOSE 3000
+
 COPY . .
+
+CMD npm run dev
